@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.soccer.www.springsecurity.securitydao.SecurityDao">
+	<select id="findByUserId" resultType="com.soccer.www.springsecurity.securityvo.MemberVo">
+			SELECT
+				m.password AS password,
+				m.name AS name,
+				r.role AS roleName
+			FROM membertest AS m
+			  INNER JOIN user_role AS ur
+			  ON m.idx = ur.idx
+			  INNER JOIN role AS r
+			  ON r.role_no = ur.role_no
+			WHERE
+				m.id = #{id}
+	</select>
+
+	
+
+
+
+</mapper>

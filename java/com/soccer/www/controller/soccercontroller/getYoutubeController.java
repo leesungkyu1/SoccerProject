@@ -1,4 +1,4 @@
-package com.soccer.www.controller;
+package com.soccer.www.controller.soccercontroller;
 
 import java.io.BufferedReader;
 import java.io.IOException;

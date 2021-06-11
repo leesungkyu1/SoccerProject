@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href = "/test">플레이리스트로</a>
-<a href = "/view.do">영상보기</a>
+	권한이 없습니다.
 </body>
 </html>

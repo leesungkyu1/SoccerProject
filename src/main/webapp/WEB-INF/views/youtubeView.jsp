@@ -3,7 +3,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 
- 
+<%    
+    request.setCharacterEncoding("UTF-8");
+    String videoId = request.getParameter("videoId");
+%> 
  
 <!DOCTYPE html>
 <html>
@@ -33,7 +36,7 @@
 	        player = new YT.Player('player', {
 	          height: '360',
 	          width: '640',
-	          videoId: 'M7lc1UVf-VE',
+	          videoId: <%= videoId %>,
 	          events: {
 	            'onReady': onPlayerReady,
 	            'onStateChange': onPlayerStateChange
@@ -66,7 +69,7 @@
 	        player = new YT.Player('player', {
 	          height: '360',
 	          width: '640',
-	          videoId: 'mDvjnf7ruUY',
+	          videoId: '<%=videoId%>',
 	          events: {
 	            'onReady': onPlayerReady,
 	            'onStateChange': onPlayerStateChange

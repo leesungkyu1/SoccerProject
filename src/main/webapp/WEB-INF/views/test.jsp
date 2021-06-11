@@ -14,27 +14,38 @@
 .board {
    border: 1px solid black;
 }
+
+.imgBox{
+   width:220px;
+   height:220px;
+}
+.imgBox img{
+   width:100%;
+   height:100%;
+}
+
 </style>
 <body>
 
 	<h1>PLAYLIST TEST</h1>
-   <div id="listDiv"></div>
-
+   <div id="listDiv">   </div>
    <button onclick="test()">test</button>
 
 
 </body>
 <script>
-var totalData;
-var id = {};
+var totaldata;
+var items;
 function test() {
    $.ajax({
       url : "/playlist.do",
       dataType : "text",
       contentType : "apllication/json",
       success : function(data) {
-         totalData = JSON.parse(data);
-         dataMapping(totalData);
+//     	console.log(asdf);
+       	totaldata = JSON.parse(data);
+       	console.log(totaldata);
+       	dataMapping(totaldata);
       },
       error : function(XMLHttpRequest, textStatus, errorThrown) {
          alert("Status: " + textStatus);
@@ -43,16 +54,13 @@ function test() {
    })
 }
 
-function dataMapping(totalData) {
-   
+function dataMapping(totaldata) {
 
-   var items = totalData.items
-
+	items = totaldata.items;
    $("#listDiv").html("");
    var listDivHtml = "";
-
    for (var i = 0; i < items.length; i++) {
-      listDivHtml += '<div class="" onclick="goViewPage(\''+ items[i].snippet.resourceId.videoId + '\')">';
+      listDivHtml += '<div class="boardmapper" onclick="goViewPage(\''+ items[i].snippet.resourceId.videoId + '\')">';
       listDivHtml += '   <span class="board">'+ items[i].snippet.resourceId.videoId + '</span>';
       listDivHtml += '   <span class="board">'+ items[i].snippet.title + '</span>';
       listDivHtml += '   <span class="board">'+ 
@@ -62,22 +70,16 @@ function dataMapping(totalData) {
 
    $("#listDiv").html(listDivHtml);
    
-   
+ 
 
 }
 
 function goViewPage(videoId) {
 	location.href="/view.do?videoId="+videoId;
+	console.log(videoId);
 }
 
 
-$(".clickDiv").click(function(){
-    // class name 가져오기
-    var value = $(this).attr('value');
-
-    alert(value);
-    
-});
 </script>
 
 </html>

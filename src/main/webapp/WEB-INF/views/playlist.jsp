@@ -14,5 +14,12 @@
 <h1>목록페이지입니다</h1>
 
 <div> 플레이리스트입니다. </div>
+	<c:set var="dataList" value="${asdf}" />
+    <c:forEach var="list" items="${dataList}">
+			      <div class="title" >
+				      <h3>${list.snippet }</h3>
+				  </div>
+	</c:forEach>
+<a href = "/test">재생목록</a>
 </body>
 </html>
